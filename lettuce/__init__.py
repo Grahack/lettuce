@@ -161,6 +161,9 @@ class Runner(object):
         # that we don't even want to test.
         try:
             self.loader.find_and_load_step_definitions()
+        except ImportError, e:
+            print "Error loading step definitions, did you create some?"
+            return
         except StepLoadingError, e:
             print "Error loading step definitions:\n", e
             return
